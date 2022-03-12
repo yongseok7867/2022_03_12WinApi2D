@@ -1,36 +1,9 @@
 #include "framework.h"
 #include "CPlayer.h"
-#include "CMissile.h"
-#include "CScene.h"
-#include "CTexture.h"
-#include "CCollider.h"
-#include "CAnimator.h"
-#include "CAnimation.h"
 
 CPlayer::CPlayer()
 {
-	m_pTex = CResourceManager::getInst()->LoadTextrue(L"PlayerTex", L"texture\\Animation_Player.bmp");
-	SetName(L"Player");
-	SetScale(fPoint(70.f, 70.f));
-
-	CreateCollider();
-	GetCollider()->SetScale(fPoint(40.f, 40.f));
-	GetCollider()->SetOffsetPos(fPoint(0.f, 10.f));
-
-	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"LeftNone",		m_pTex, fPoint(0.f, 0.f),	fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.5f, 2);
-	GetAnimator()->CreateAnimation(L"RightNone",	m_pTex, fPoint(0.f, 70.f),	fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.5f, 2);
-	GetAnimator()->CreateAnimation(L"LeftMove",		m_pTex, fPoint(0.f, 140.f),	fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.25f, 3);
-	GetAnimator()->CreateAnimation(L"RightMove",	m_pTex, fPoint(0.f, 210.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.25f, 3);
-	GetAnimator()->CreateAnimation(L"LeftHit",		m_pTex, fPoint(140.f, 0.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.25f, 1);
-	GetAnimator()->CreateAnimation(L"RightHit",		m_pTex, fPoint(140.f, 70.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.25f, 1);
-	GetAnimator()->Play(L"LeftNone");
-
-	CAnimation* pAni;
-	pAni = GetAnimator()->FindAnimation(L"LeftMove");
-	pAni->GetFrame(1).fptOffset = fPoint(0.f, -20.f);
-	pAni = GetAnimator()->FindAnimation(L"RightMove");
-	pAni->GetFrame(1).fptOffset = fPoint(0.f, -20.f);
+	SetScale(fPoint(100.f, 100.f));
 }
 
 CPlayer::~CPlayer()
@@ -38,59 +11,47 @@ CPlayer::~CPlayer()
 
 }
 
-CPlayer* CPlayer::Clone()
+CGameObject* CPlayer::Clone()
 {
-	return new CPlayer(*this);
+	return nullptr;
 }
 
 void CPlayer::update()
 {
 	fPoint pos = GetPos();
 
-	if (Key(VK_LEFT))
+	if (key('W'))
 	{
-		pos.x -= m_fVelocity * fDT;
-		GetAnimator()->Play(L"LeftMove");
-	}
-	if (Key(VK_RIGHT))
-	{
-		pos.x += m_fVelocity * fDT;
-		GetAnimator()->Play(L"RightMove");
-	}				   
-	if (Key(VK_UP))	   
-	{				   
-		pos.y -= m_fVelocity * fDT;
-	}				   
-	if (Key(VK_DOWN))  
-	{				   
-		pos.y += m_fVelocity * fDT;
+		pos.y -= 1000 * fDT;
 	}
 
+	if (key('A'))
+	{
+		pos.x -= 1000 * fDT;
+	}
+
+	if (key('W'))
+	{
+		pos.y += 1000 * fDT;
+	}
+
+	if (key('W'))
+	{
+		pos.x += 1000 * fDT;
+	}
+	
 	SetPos(pos);
-
-	if (KeyDown(VK_SPACE))
-	{
-		CreateMissile();
-		GetAnimator()->Play(L"LeftHit");
-	}
-
-	GetAnimator()->update();
 }
 
-void CPlayer::render(HDC hDC)
+void CPlayer::render(HDC hDc)
 {
-	component_render(hDC);
-}
+	fPoint pos = GetPos();
+	fPoint scale = GetScale();
 
-void CPlayer::CreateMissile()
-{
- 	fPoint fpMissilePos = GetPos();
-	fpMissilePos.x += GetScale().x / 2.f;
-
-	// Misiile Object
-	CMissile* pMissile = new CMissile;
-	pMissile->SetPos(fpMissilePos);
-	pMissile->SetDir(fVec2(1, 0));
-
-	CreateObj(pMissile, GROUP_GAMEOBJ::MISSILE_PLAYER);
+	Rectangle(hDC,
+		(int)(pos.x - scale.x / 2),
+		(int)(pos.y - scale.y / 2),
+		(int)(pos.x - scale.x / 2),
+		(int)(pos.y - scale.y / 2)
+		);
 }
