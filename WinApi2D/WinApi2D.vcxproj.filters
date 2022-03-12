@@ -156,6 +156,9 @@
     <ClInclude Include="CPlayer.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="CScene_Start.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinApi2D.cpp">
@@ -232,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="CPlayer.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Start.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
