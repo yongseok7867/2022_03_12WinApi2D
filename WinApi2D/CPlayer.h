@@ -10,6 +10,6 @@ public:
 	virtual CGameObject* Clone();
 
 	virtual void update();
-	virtual void render();
+	virtual void render(HDC hDc);
 };
 

@@ -20,22 +20,22 @@ void CPlayer::update()
 {
 	fPoint pos = GetPos();
 
-	if (key('W'))
+	if (Key('W'))
 	{
 		pos.y -= 1000 * fDT;
 	}
 
-	if (key('A'))
+	if (Key('A'))
 	{
 		pos.x -= 1000 * fDT;
 	}
 
-	if (key('W'))
+	if (Key('W'))
 	{
 		pos.y += 1000 * fDT;
 	}
 
-	if (key('W'))
+	if (Key('W'))
 	{
 		pos.x += 1000 * fDT;
 	}
@@ -43,7 +43,7 @@ void CPlayer::update()
 	SetPos(pos);
 }
 
-void CPlayer::render(HDC hDc)
+void CPlayer::render(HDC hDC)
 {
 	fPoint pos = GetPos();
 	fPoint scale = GetScale();

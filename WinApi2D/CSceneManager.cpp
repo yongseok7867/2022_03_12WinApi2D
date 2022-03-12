@@ -3,7 +3,6 @@
 #include "CScene.h"
 #include "CScene_Start.h"
 
-
 CSceneManager::CSceneManager()
 {
 	// 씬 목록 초기화
