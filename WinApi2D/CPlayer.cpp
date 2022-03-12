@@ -8,7 +8,6 @@ CPlayer::CPlayer()
 
 CPlayer::~CPlayer()
 {
-
 }
 
 CGameObject* CPlayer::Clone()
@@ -30,12 +29,12 @@ void CPlayer::update()
 		pos.x -= 1000 * fDT;
 	}
 
-	if (Key('W'))
+	if (Key('S'))
 	{
 		pos.y += 1000 * fDT;
 	}
 
-	if (Key('W'))
+	if (Key('D'))
 	{
 		pos.x += 1000 * fDT;
 	}
@@ -51,7 +50,7 @@ void CPlayer::render(HDC hDC)
 	Rectangle(hDC,
 		(int)(pos.x - scale.x / 2),
 		(int)(pos.y - scale.y / 2),
-		(int)(pos.x - scale.x / 2),
-		(int)(pos.y - scale.y / 2)
+		(int)(pos.x + scale.x / 2),
+		(int)(pos.y + scale.y / 2)
 		);
 }
