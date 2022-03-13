@@ -60,6 +60,6 @@ void CPlayer::render(HDC hDC)
 		, 0
 		, m_pTex->GetBmpWidth()
 		, m_pTex->GetBmpHeight()
-		, RGB(255, 0, 255) // RGB(255, 0, 255) 마젠타색(보라색) 을 제외한 사진을 그리는 TransparentBlt
+		, RGB(255, 0, 255)	// RGB(255, 0, 255) 마젠타색(보라색) 을 제외한 사진을 그리는 TransparentBlt
 	);
 }
