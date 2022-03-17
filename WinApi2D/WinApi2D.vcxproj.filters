@@ -156,7 +156,7 @@
     <ClInclude Include="CPlayer.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="CScene_Start.h">
+    <ClInclude Include="CScene_Title.h">
       <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
@@ -236,7 +236,7 @@
     <ClCompile Include="CPlayer.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="CScene_Start.cpp">
+    <ClCompile Include="CScene_Title.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>

@@ -39,7 +39,7 @@ void CAnimator::render(HDC hDC)
 	}
 }
 
-void CAnimator::CreateAnimation(const wstring& strName, CTexture* tex, fPoint lt, fPoint slice, fPoint step, float duration, UINT frmCount)
+void CAnimator::CreateAnimation(const wstring& strName, CTexture* tex, fPoint lt, fPoint slice, fPoint step, float duration, UINT frmCount, bool reverse)
 {
 	CAnimation* pAni = FindAnimation(strName);
 	assert(nullptr == pAni);

@@ -52,6 +52,7 @@ enum class GROUP_GAMEOBJ
 enum class GROUP_SCENE
 {
 	TOOL,
+	TITLE,
 	START,
 	STAGE_01,
 	STAGE_02,
